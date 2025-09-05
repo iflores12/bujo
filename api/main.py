@@ -5,8 +5,6 @@ app = FastAPI()
 
 app.include_router(upload.router)
 
-app.get("/")
-
-
+@app.get("/")
 def read_root():
     return {"Hello": "World"}
