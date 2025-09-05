@@ -6,20 +6,18 @@ router = APIRouter(prefix="/analyze")
 
 
 @router.get("/", tags=["analyze"])
-async def get_photo_analysis(file: str):
+def get_photo_analysis(file: str):
     try:
         with open(file, "rb") as f:
             image = f.read()
 
         response = ollama.chat(
-            model="qwen2.5vl",
-            messages=[
-                {
-                    "role": "user",
-                    "content": "This is a page from a bullet journal notebook. It uses the standard notation for bullet journaling. Destructure the page into readable json. Break everything into it's own element.",
-                    "images": [image],
-                }
-            ],
+            model = "qwen2.5vl",
+            messages = [{
+                "role": "user",
+                "content": "This is a page from a bullet journal notebook. It uses the standard notation for bullet journaling. Destructure the page into readable json. Break everything into its own element.",
+                "images": [image]
+            }]
         )
     except Exception:
         raise HTTPException(
@@ -28,5 +26,5 @@ async def get_photo_analysis(file: str):
         )
 
     if not response.get("message", None) or not response.get("message", None).get("content", None):
-        raise Exception("Did not get anything back from qwen")
+        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="Did not get any content back from qwen")
     return {"bujo": response["message"]["content"]}
