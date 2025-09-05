@@ -4,7 +4,7 @@ import uuid
 router = APIRouter(prefix="/upload")
 
 
-@router.post("/upload", tags=["upload"])
+@router.post("/", tags=["upload"])
 async def upload(file: UploadFile = File(...)):
     file.filename = f"{uuid.uuid4()}.jpg"
 
