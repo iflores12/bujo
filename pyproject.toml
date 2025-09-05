@@ -52,5 +52,5 @@ exclude = [
 [tool.black]
 line-length = 120
 
-[lint.ignore]
+[tool.ruff.lint]
 ignore = ["D203"]
