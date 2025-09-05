@@ -22,5 +22,5 @@ def get_photo_analysis(file: str):
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something went wrong while trying to analyze your photo")
 
     if not response.get("message", None) or not response.get("message", None).get("content", None):
-        raise Exception("Did not get anything back from qwen")
+        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="Did not get any content back from qwen")
     return {"bujo": response["message"]["content"]}
