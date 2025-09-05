@@ -14,7 +14,7 @@ def get_photo_analysis(file: str):
             model = "qwen2.5vl",
             messages = [{
                 "role": "user",
-                "content": "This is a page from a bullet journal notebook. It uses the standard notation for bullet journaling. Destructure the page into readable json. Break everything into it's own element.",
+                "content": "This is a page from a bullet journal notebook. It uses the standard notation for bullet journaling. Destructure the page into readable json. Break everything into its own element.",
                 "images": [image]
             }]
         )
