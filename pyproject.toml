@@ -6,10 +6,11 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "black>=25.1.0",
-    "fastapi>=0.116.1",
+    "fastapi[standard]>=0.116.1",
     "ollama>=0.5.3",
     "pydantic>=2.11.7",
     "pytest>=8.4.2",
+    "python-multipart>=0.0.20",
     "ruff>=0.12.12",
 ]
 
