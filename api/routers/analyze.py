@@ -5,7 +5,7 @@ import ollama
 router = APIRouter(prefix="/analyze")
 
 @router.get("/", tags=["analyze"])
-async def get_photo_analysis(file: str):
+def get_photo_analysis(file: str):
     try:
         with open(file, "rb") as f:
             image = f.read()
